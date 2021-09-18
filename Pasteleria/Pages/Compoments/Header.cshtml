@@ -36,11 +36,11 @@
 			<i class="fa fa-bars"></i>
 			<span class="sr-only">Toggle navigation</span>
 			</button>
-			<a asp-area="" asp-page="/" class="navbar-brand brand"> @(Resource.appName) </a>
+			<a asp-area="" asp-page="Index" class="navbar-brand brand"> @(Resource.appName) </a>
 
-			<environment include="Development">
+			@*<environment include="Development">*@
 				<small> @(Resource.appVersion) </small>
-			</environment>
+			@*</environment>*@
 			
 		</div>
 		<div id="navbar-collapse-02" class="collapse navbar-collapse">
