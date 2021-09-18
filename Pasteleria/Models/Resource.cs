@@ -10,7 +10,7 @@ namespace Pasteleria.Models
     {
         //Home
 
-        public static string appName = "PASTELERIA";
+        public static string appName = "AMR-PASTELERIA";
         public static string appVersion = "v21.09.01";
 
         public string HOME = "Home";
