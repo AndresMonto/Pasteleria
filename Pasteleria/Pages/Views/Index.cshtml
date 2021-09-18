@@ -1,7 +1,7 @@
 ﻿@page "/"
 @model IndexModel
-@using Pasteleria.Models
 
+<title>@Resource.appName - @ResourceConfig.Resources.HOME</title>
 
 <!-- HEADER =============================-->
 
@@ -204,6 +204,20 @@
 </section>
 
 
+<!-- BUTTON =============================-->
+<div class="item content">
+	<div class="container text-center">
+		<a asp-area="" asp-page="Products" class="homebrowseitems">Ver Productos
+		<div class="homebrowseitemsicon">
+			<i class="fa fa-star fa-spin"></i>
+		</div>
+		</a>
+	</div>
+</div>
+<br/>
+
+
+
 <!-- STEPS =============================-->
 <div class="item content">
 	<div class="container toparea">
@@ -242,19 +256,6 @@
 		</div>
 	</div>
 </div>
-
-
-<!-- BUTTON =============================-->
-<div class="item content">
-	<div class="container text-center">
-		<a asp-area="" asp-page="Products" class="homebrowseitems">Ver Productos
-		<div class="homebrowseitemsicon">
-			<i class="fa fa-star fa-spin"></i>
-		</div>
-		</a>
-	</div>
-</div>
-<br/>
 
 
 <!-- AREA =============================-->

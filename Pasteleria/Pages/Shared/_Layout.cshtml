@@ -5,6 +5,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="">
+
+
+@*<title>@Resource.appName</title>*@
+<meta name="description" content="Deliciosos pasteles y variedades de dulces para cualquier ocasión"/>
+<meta name="keywords" content="pasteles, postres, rico, delicioso, tienda, negocio, Jeny"/>
+<meta name="author" content="Andres Montoya" />
+<META NAME="reply-to" CONTENT="andres_99montoy@hotmail.com">
+<LINK REV="made" href="mailto:andres_99montoy@hotmail.com">
+@*<meta name="copyright" content="Propietario del copyright" />*@
+ <meta name="robots" content="index,follow"/>
+
+ <meta http-equiv="cache-control" content="cache"/>
+ <meta http-equiv="expires" content="600"/>
+
+
 <link href="~/templete/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 <link href="~/templete/css/style.css" rel="stylesheet">
@@ -35,18 +50,20 @@
 	<div class="container">
 		<div class="row">
 			<p class="footernote">
-				 Connect with Scorilo
+				 Connect with @ResourceConfig.Resources.menu.First().title1
 			</p>
 			<ul class="social-iconsfooter">
-				<li><a href="#"><i class="fa fa-phone"></i></a></li>
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+				@*<li><a href="#"><i class="fa fa-phone"></i></a></li>*@
+				<li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="https://www.google.com" target="_blank"><i class="fa fa-google"></i></a></li>
+				@*<li><a href="#"><i class="fa fa-pinterest"></i></a></li>*@
 			</ul>
-			<p>
-				 &copy; 2017 Your Website Name<br/>
-				Scorilo - Free template by <a href="https://www.wowthemes.net/">WowThemesNet</a>
+			<p>				
+				@*Scorilo - Free template by <a href="https://www.wowthemes.net/">WowThemesNet</a>*@
+				Telefonos: <strong>318 456 1281</strong> - <strong>317 895 78 12</strong> <br/>
+				Dirección: <strong>Cra 41 H # 44 46</strong> <br/>
+				@*&copy;*@ <script> document.write(new Date().getFullYear()); </script> <strong> @Resource.appName </strong>
 			</p>
 		</div>
 	</div>

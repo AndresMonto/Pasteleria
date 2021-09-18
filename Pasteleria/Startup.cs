@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pasteleria.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,17 @@ using System.Threading.Tasks;
 
 namespace Pasteleria
 {
+    public static class ResourceConfig {
+
+        public static Resource Resources;
+    }
+
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
+            ResourceConfig.Resources = new Resource();
             Configuration = configuration;
         }
 
@@ -23,6 +31,9 @@ namespace Pasteleria
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
+
             services.AddRazorPages();
         }
 
