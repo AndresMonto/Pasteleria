@@ -25,7 +25,7 @@ namespace Pasteleria.Models
             //Menus
 
             menu = new List<Menu>() {
-                new Menu(){ name = HOME, url = HOMEurl, title1 =  "DOÑA JENY", title2 = "Pasteles y Postres"},
+                new Menu(){ name = HOME, url = HOMEurl, title1 =  "PUNTO DULCE MAY", title2 = "El sabor no se improvisa"},
                 new Menu(){ name = PRODUCTS, url = PRODUCTS, title1 = "Product Name" },
                 new Menu(){ name = SHOP, url = SHOP, title1 = "Shop" }
 

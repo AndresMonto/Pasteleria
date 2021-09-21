@@ -44,10 +44,21 @@ header .navbar-white a {
 	color:#3D566E;
 	font-weight:700;
 }
-.item.content,.item.portfolio,.item.team,.item.pricing,.item.contact {
-	padding-top:40px;
-	padding-bottom:0px;
+
+.background-content {
+	background: #3D565E !important;
+	padding-top: 40px;
+	padding-bottom: 0px;
+	padding-right: 60px;
+	padding-left: 60px;
 }
+
+.item.content:not(.background-content), .item.portfolio, .item.team, .item.pricing, .item.contact {
+	padding-top: 40px;
+	padding-bottom: 0px;
+}
+
+
 .padding-top-100 {
 	padding-top:180px !important;
 }
@@ -70,9 +81,9 @@ header .navbar-white {
 	font-family:Dosis;
 	text-transform:uppercase;
 }
-	.text-homeimage {
+.text-homeimage {
 	text-align:center;
-	color:#3D566E;
+	color:#fff;
 	z-index:2;
 	position:relative;
 	font-size:75px;
@@ -99,13 +110,14 @@ header .navbar-white {
 .subtext-image {
 	text-transform: none;
 	font-weight: bold;
-	color: #3D566E;
+	color: #fff;
 	font-size: 50px;
 }
 .toparea {
 	background:#fff;
 	margin-top:-100px;
 	padding-top:30px;
+	padding-bottom:30px;
 }
 .numbertext {
 	font-weight:700;
