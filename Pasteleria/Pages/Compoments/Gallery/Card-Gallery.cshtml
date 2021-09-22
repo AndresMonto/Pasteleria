@@ -4,29 +4,125 @@
 @using Pasteleria.Models
 
 @{
+
+	var url = Url.ActionLink();
+	Resource rs = ResourceConfig.Resources;
+	Card_Gallery gallery = new();
+	Item_Gallery ga = new();
+	string id = Guid.NewGuid().ToString();
+	
+
+	if (url.EndsWith("/") || url.Contains(rs.HOMEurl))
+	{
+		gallery = rs.gallery.First(x => x.module == rs.HOME);
+
+	} else
+	{
+		foreach (var item in rs.gallery)
+		{
+			if (url.Contains(item.module))
+			{
+				gallery = rs.gallery.First(x => x.module == item.module);
+				break;
+			}
+		}
+	}
 }
 
 
-<div class="productbox">
-	<div class="fadeshop">
-		<div class="captionshop text-center" style="display: none;">
-			<h3>Item Name</h3>
-			<p>
-					This is a short excerpt to generally describe what the item is about.
-			</p>
-			<p>
-				<a href="#" class="learn-more detailslearn"><i class="fa fa-shopping-cart"></i> Purchase</a>
-				<a href="#" class="learn-more detailslearn"><i class="fa fa-link"></i> Details</a>
-			</p>
+<section class="item content">
+	<div class="container">
+		<div class="underlined-title">
+			<div class="editContent">
+				<h1 class="text-center latestitems">@gallery.title</h1>
+			</div>
+			<div class="wow-hr type_short">
+				<span class="wow-hr-h">
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				</span>
+			</div>
 		</div>
-		<span class="maxproduct"><img src="templete/images/product1-1.jpg" alt=""></span>
+		@*<div class="row">*@
+
+		
+			<div id="Carousel@(id)" class="carousel slide" data-ride="carousel">
+			
+
+			<div class="carousel-inner">
+
+			@{ int index = 0; }
+
+			@for(int i = 0; i < gallery.items.Count() && index < gallery.items.Count() ; i+=2){
+				
+
+				<div class="item @(index==0 ? "active" : "")">
+				<div class="container">
+				<div class="row justify-content-center">
+
+				@for(int j = 0 ; j < gallery.cardByRow ; j++){
+
+					@if(index < gallery.items.Count()){
+
+						<div style="display: none;">
+						@( ga = gallery.items[index] )
+						</div>
+						
+						<!-- /.productbox -->
+						<div class="col-md-4 align-self-center">
+							<div class="productbox">
+								<div class="fadeshop">
+									<div class="captionshop text-center" style="display: none;">
+										<h3>@ga.innerTitle</h3>
+										<p>
+												@ga.description
+										</p>
+										<p>
+											@foreach(var btn in ga.buttons){
+												<a href="@btn.url" class="learn-more detailslearn"><i class="@btn.icon"></i> @btn.text</a>
+											}
+										</p>
+									</div>
+									<span class="maxproduct"><img src="@ga.image" alt=""></span>
+								</div>
+								<div class="product-details">
+									<a href="@ga.titleUrl">
+									<h1>@ga.title</h1>
+									</a>
+									<span class="price">
+									<span class="edd_price">$@ga.price</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					}
+
+					index++;
+					
+				}
+				</div>
+				</div>
+				</div>
+
+                
+			}
+
+
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#Carousel@(id)" data-slide="prev" style="width: 70px;">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+			<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#Carousel@(id)" data-slide="next" style="width: 70px;">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+			<span class="sr-only text-dark">Next</span>
+			</a>
+
+			</div>
+
+		@*</div>*@
 	</div>
-	<div class="product-details">
-		<a href="#">
-		<h1>Calypso Theme</h1>
-		</a>
-		<span class="price">
-		<span class="edd_price">$49.00</span>
-		</span>
-	</div>
-</div>
+</section>

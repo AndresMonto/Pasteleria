@@ -4,9 +4,9 @@
 
 @{
 	var url = Url.ActionLink();
-	Menu menu = new Menu();
-
 	Resource rs = ResourceConfig.Resources;
+	Menu menu = new();
+
 
 	if (url.EndsWith("/") || url.Contains(rs.HOMEurl))
 	{
