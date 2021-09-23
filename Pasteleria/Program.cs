@@ -13,7 +13,6 @@ namespace Pasteleria
     {
         public static void Main(string[] args)
         {
-            Environment.SetEnvironmentVariable("NombreApp", "Pasteleria");
             CreateHostBuilder(args).Build().Run();
         }
 

@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pasteleria.BusinessLogic;
 using Pasteleria.Models;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,7 @@ namespace Pasteleria
 
         public Startup(IConfiguration configuration)
         {
+            
             ResourceConfig.Resources = new Resource();
             Configuration = configuration;
         }
@@ -35,6 +38,11 @@ namespace Pasteleria
                 .AddRazorRuntimeCompilation();
 
             services.AddRazorPages();
+
+            services.AddSingleton(new Context());
+
+           // services.AddDbContext<Context>(options =>
+           //options.UseNpgsql(Context.GetStringConexion()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

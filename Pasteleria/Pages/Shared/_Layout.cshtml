@@ -6,19 +6,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="">
 
-
+<link rel="shortcut icon" href="~/templete/images/logo.ico" />
 @*<title>@Resource.appName</title>*@
-<meta name="description" content="Deliciosos pasteles y variedades de dulces para cualquier ocasión"/>
-<meta name="keywords" content="pasteles, postres, rico, delicioso, tienda, negocio, Jeny"/>
+<meta name="description" content="Deliciosos pasteles y variedades de dulces toda cualquier ocasión"/>
+<meta name="keywords" content="punto, dulce, may, pasteles, tortas, batidos, desayunos, sorpresa,  postres, alquiler, maquetas, rico, delicioso, tienda, negocio, Yelly"/>
 @*<meta name="author" content="Andres Montoya" />*@
 @*<META NAME="reply-to" CONTENT="andres_99montoy@hotmail.com">*@
 @*<LINK REV="made" href="mailto:andres_99montoy@hotmail.com">*@
 @*<meta name="copyright" content="Propietario del copyright" />*@
  <meta name="robots" content="index,follow"/>
 
- <meta http-equiv="cache-control" content="cache"/>
- <meta http-equiv="expires" content="604800"/> @*7 Días*@
-
+ <environment exclude="Development">
+	 <meta http-equiv="cache-control" content="cache"/>
+	 <meta http-equiv="expires" content="604800"/> @*7 Días*@
+ </environment>
 
 <link href="~/templete/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
@@ -50,7 +51,7 @@
 	<div class="container">
 		<div class="row">
 			<p class="footernote">
-				 Conéctate con @ResourceConfig.Resources.menu.First().title1
+				 <img src="~/templete/images/logo.png" width="50px" height="50px" /> @ResourceConfig.Resources.menu.First().Title1
 			</p>
 			<ul class="social-iconsfooter">
 				@*<li><a href="#"><i class="fa fa-phone"></i></a></li>*@

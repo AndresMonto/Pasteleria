@@ -6,24 +6,14 @@ using System.Threading.Tasks;
 
 namespace Pasteleria.Models
 {
-    public partial class Resource
-    {
-        //Gallery
-
-    }
-
-
     public class Card_Gallery { 
     
         public string title { get; set; }
-        public List<Item_Gallery> items { get; set; }
+        public List<Item_Gallery> items { get; set; } = new();
         public int order { get; set; }
         public string module { get; set; }
+        public bool carousel { get; set; }
         public int cardByRow { get; set; }
-
-        
-
-
 
     }
 
@@ -35,7 +25,7 @@ namespace Pasteleria.Models
         public string description { get; set; }
         public string image { get; set; }
         public int price { get; set; }
-        public List<Button_Gallery> buttons { get; set; }
+        public List<Button_Gallery> buttons { get; set; } = new();
     }
 
     public class Button_Gallery {

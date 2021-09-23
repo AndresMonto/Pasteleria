@@ -33,6 +33,13 @@
 <section class="item content">
 	<div class="container">
 		<div class="underlined-title">
+			<div class="wow-hr type_short">
+				<span class="wow-hr-h">
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				</span>
+			</div>
 			<div class="editContent">
 				<h1 class="text-center latestitems">@gallery.title</h1>
 			</div>
@@ -46,71 +53,74 @@
 		</div>
 		@*<div class="row">*@
 
+
 		
-			<div id="Carousel@(id)" class="carousel slide" data-ride="carousel">
+		<div id="Carousel@(id)" class="carousel slide" data-ride="carousel">
 			
 
-			<div class="carousel-inner">
+		<div class="carousel-inner">
 
-			@{ int index = 0; }
+		@{ int index = 0; }
 
-			@for(int i = 0; i < gallery.items.Count() && index < gallery.items.Count() ; i+=2){
+		@for(int i = 0; i < gallery.items.Count() && index < gallery.items.Count() ; i+=2){
 				
 
-				<div class="item @(index==0 ? "active" : "")">
-				<div class="container">
-				<div class="row justify-content-center">
+			<div class="item @(index==0 ? "active" : "")">
+			<div class="container">
+			<div class="row justify-content-center">
 
-				@for(int j = 0 ; j < gallery.cardByRow ; j++){
+			@for(int j = 0 ; j < gallery.cardByRow ; j++){
 
-					@if(index < gallery.items.Count()){
+				@if(index < gallery.items.Count()){
 
-						<div style="display: none;">
-						@( ga = gallery.items[index] )
-						</div>
+					<div style="display: none;">
+					@( ga = gallery.items[index] )
+					</div>
 						
-						<!-- /.productbox -->
-						<div class="col-md-4 align-self-center">
-							<div class="productbox">
-								<div class="fadeshop">
-									<div class="captionshop text-center" style="display: none;">
-										<h3>@ga.innerTitle</h3>
-										<p>
-												@ga.description
-										</p>
-										<p>
-											@foreach(var btn in ga.buttons){
-												<a href="@btn.url" class="learn-more detailslearn"><i class="@btn.icon"></i> @btn.text</a>
-											}
-										</p>
-									</div>
-									<span class="maxproduct"><img src="@ga.image" alt=""></span>
+					<!-- /.productbox -->
+					<div class="col-md-4 align-self-center">
+						<div class="productbox">
+							<div class="fadeshop">
+								<div class="captionshop text-center" style="display: none;">
+									<h3>@ga.innerTitle</h3>
+									<p>
+											@ga.description
+									</p>
+									<p>
+										@foreach(var btn in ga.buttons){
+											<a href="@btn.url" class="learn-more detailslearn"><i class="@btn.icon"></i> @btn.text</a>
+										}
+									</p>
 								</div>
-								<div class="product-details">
-									<a href="@ga.titleUrl">
-									<h1>@ga.title</h1>
-									</a>
-									<span class="price">
-									<span class="edd_price">$@ga.price</span>
-									</span>
-								</div>
+								<span class="maxproduct"><img src="@ga.image" alt=""></span>
+							</div>
+							<div class="product-details">
+								<a href="@ga.titleUrl">
+								<h1>@ga.title</h1>
+								</a>
+								<span class="price">
+								<span class="edd_price">$@ga.price</span>
+								</span>
 							</div>
 						</div>
-					}
-
-					index++;
-					
+					</div>
 				}
-				</div>
-				</div>
-				</div>
 
-                
+				index++;
+					
 			}
-
-
+			</div>
+			</div>
 			</div>
 
+                
+		}
+
+
+		</div>
+
+		@if (gallery.carousel)
+		{
 			<!-- Left and right controls -->
 			<a class="left carousel-control" href="#Carousel@(id)" data-slide="prev" style="width: 70px;">
 			<span class="glyphicon glyphicon-chevron-left"></span>
@@ -120,8 +130,11 @@
 			<span class="glyphicon glyphicon-chevron-right"></span>
 			<span class="sr-only text-dark">Next</span>
 			</a>
+		}
 
-			</div>
+			
+
+		</div>
 
 		@*</div>*@
 	</div>
