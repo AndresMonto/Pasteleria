@@ -47,11 +47,6 @@ namespace Pasteleria.Models
                             image = "http://drive.google.com/uc?export=view&id=1hLPgOsgKk0ClLcAm5Pbo-lTm5gfD3OM0",
                             price = 5500,
                             buttons = new List<Button_Gallery>(){ 
-                                new Button_Gallery(){ 
-                                    icon = "fa fa-shopping-cart",
-                                    text = "Purchace",
-                                    url = "#"
-                                },
                                 new Button_Gallery(){
                                     icon = "fa fa-link",
                                     text = "Details",
@@ -68,11 +63,6 @@ namespace Pasteleria.Models
                             price = 6500,
                             buttons = new List<Button_Gallery>(){
                                 new Button_Gallery(){
-                                    icon = "fa fa-shopping-cart",
-                                    text = "Purchace",
-                                    url = "#"
-                                },
-                                new Button_Gallery(){
                                     icon = "fa fa-link",
                                     text = "Details",
                                     url = "#"
@@ -80,7 +70,7 @@ namespace Pasteleria.Models
                             }
                         },
                         new Item_Gallery(){
-                            title = "Pastel Vainilla",
+                            title = "Pastel Cereza",
                             titleUrl = "#",
                             innerTitle = "Descripción",
                             description = "Esto es una prueba del componente",
@@ -88,11 +78,6 @@ namespace Pasteleria.Models
                             price = 6500,
                             buttons = new List<Button_Gallery>(){
                                 new Button_Gallery(){
-                                    icon = "fa fa-shopping-cart",
-                                    text = "Purchace",
-                                    url = "#"
-                                },
-                                new Button_Gallery(){
                                     icon = "fa fa-link",
                                     text = "Details",
                                     url = "#"
@@ -100,7 +85,7 @@ namespace Pasteleria.Models
                             }
                         },
                         new Item_Gallery(){
-                            title = "Pastel Vainilla",
+                            title = "Pastel Fresa",
                             titleUrl = "#",
                             innerTitle = "Descripción",
                             description = "Esto es una prueba del componente",
@@ -108,11 +93,6 @@ namespace Pasteleria.Models
                             price = 6500,
                             buttons = new List<Button_Gallery>(){
                                 new Button_Gallery(){
-                                    icon = "fa fa-shopping-cart",
-                                    text = "Purchace",
-                                    url = "#"
-                                },
-                                new Button_Gallery(){
                                     icon = "fa fa-link",
                                     text = "Details",
                                     url = "#"
@@ -120,7 +100,7 @@ namespace Pasteleria.Models
                             }
                         },
                         new Item_Gallery(){
-                            title = "Pastel Vainilla",
+                            title = "Pastel Naranja",
                             titleUrl = "#",
                             innerTitle = "Descripción",
                             description = "Esto es una prueba del componente",
@@ -128,11 +108,6 @@ namespace Pasteleria.Models
                             price = 6500,
                             buttons = new List<Button_Gallery>(){
                                 new Button_Gallery(){
-                                    icon = "fa fa-shopping-cart",
-                                    text = "Purchace",
-                                    url = "#"
-                                },
-                                new Button_Gallery(){
                                     icon = "fa fa-link",
                                     text = "Details",
                                     url = "#"
@@ -140,7 +115,7 @@ namespace Pasteleria.Models
                             }
                         },
                         new Item_Gallery(){
-                            title = "Pastel Vainilla",
+                            title = "Pastel Mandarina",
                             titleUrl = "#",
                             innerTitle = "Descripción",
                             description = "Esto es una prueba del componente",
@@ -148,18 +123,12 @@ namespace Pasteleria.Models
                             price = 6500,
                             buttons = new List<Button_Gallery>(){
                                 new Button_Gallery(){
-                                    icon = "fa fa-shopping-cart",
-                                    text = "Purchace",
-                                    url = "#"
-                                },
-                                new Button_Gallery(){
                                     icon = "fa fa-link",
                                     text = "Details",
                                     url = "#"
                                 }
                             }
                         }
-
 
                     }
                     
