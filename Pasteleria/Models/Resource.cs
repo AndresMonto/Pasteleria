@@ -1,6 +1,10 @@
 ﻿using Pasteleria.BusinessLogic;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Pasteleria.Models
 {
@@ -11,132 +15,51 @@ namespace Pasteleria.Models
         public static string appName = "AMR-PASTELERIA";
         public static string appVersion = "v21.09.01";
 
+        public int ComponentId;
+
         public string HOME = "Home";
         public string HOMEurl = "Index";
         public string CATALOGUE = "Catalogues";
         public string PRODUCTS = "Products";
         public string COMMENT = "Comments";
 
-        public List<Menu> menu = new();
-        public List<Card_Gallery> gallery = new();
+        public List<Menu> Menu = new();
+        public List<Gallery> Gallery = new();
 
         public Resource() {
 
-            //Menus
-
             var contex = new Context();
 
-            menu = contex.Menu.OrderBy(x=>x.Order).ToList();
-
-            //Gallery
-
-            gallery = (new List<Card_Gallery> {
-                new Card_Gallery(){
-                    title = "PASTELES",
-                    module = HOME,
-                    order = 1,
-                    carousel = true,
-                    cardByRow = 3,
-
-                    items = new List<Item_Gallery>(){
-                        new Item_Gallery(){
-                            title = "Pastel Chocolate",
-                            titleUrl = "#",
-                            innerTitle = "Descripción",
-                            description = "Esto es una prueba del componente",
-                            image = "http://drive.google.com/uc?export=view&id=1hLPgOsgKk0ClLcAm5Pbo-lTm5gfD3OM0",
-                            price = 5500,
-                            buttons = new List<Button_Gallery>(){ 
-                                new Button_Gallery(){
-                                    icon = "fa fa-link",
-                                    text = "Details",
-                                    url = "#"
-                                }
-                            }
-                        },
-                        new Item_Gallery(){
-                            title = "Pastel Vainilla",
-                            titleUrl = "#",
-                            innerTitle = "Descripción",
-                            description = "Esto es una prueba del componente",
-                            image = "http://drive.google.com/uc?export=view&id=1t0bcgDyPOlRDXGR5J5EDl1NcZh4kvHGP",
-                            price = 6500,
-                            buttons = new List<Button_Gallery>(){
-                                new Button_Gallery(){
-                                    icon = "fa fa-link",
-                                    text = "Details",
-                                    url = "#"
-                                }
-                            }
-                        },
-                        new Item_Gallery(){
-                            title = "Pastel Cereza",
-                            titleUrl = "#",
-                            innerTitle = "Descripción",
-                            description = "Esto es una prueba del componente",
-                            image = "http://drive.google.com/uc?export=view&id=1LV4tDtc7aheYeW4elR281L60FZVpGnlw",
-                            price = 6500,
-                            buttons = new List<Button_Gallery>(){
-                                new Button_Gallery(){
-                                    icon = "fa fa-link",
-                                    text = "Details",
-                                    url = "#"
-                                }
-                            }
-                        },
-                        new Item_Gallery(){
-                            title = "Pastel Fresa",
-                            titleUrl = "#",
-                            innerTitle = "Descripción",
-                            description = "Esto es una prueba del componente",
-                            image = "http://drive.google.com/uc?export=view&id=1PE4aMjFhMzHedEccAjwBOcVkHFL1kuPZ",
-                            price = 6500,
-                            buttons = new List<Button_Gallery>(){
-                                new Button_Gallery(){
-                                    icon = "fa fa-link",
-                                    text = "Details",
-                                    url = "#"
-                                }
-                            }
-                        },
-                        new Item_Gallery(){
-                            title = "Pastel Naranja",
-                            titleUrl = "#",
-                            innerTitle = "Descripción",
-                            description = "Esto es una prueba del componente",
-                            image = "http://drive.google.com/uc?export=view&id=1y-cTE27MtvtQsSDasrgk10fTrODu6cFO",
-                            price = 6500,
-                            buttons = new List<Button_Gallery>(){
-                                new Button_Gallery(){
-                                    icon = "fa fa-link",
-                                    text = "Details",
-                                    url = "#"
-                                }
-                            }
-                        },
-                        new Item_Gallery(){
-                            title = "Pastel Mandarina",
-                            titleUrl = "#",
-                            innerTitle = "Descripción",
-                            description = "Esto es una prueba del componente",
-                            image = "http://drive.google.com/uc?export=view&id=1YhuQF_xRWhUT_i-orXzXDj_pSdKRytSf",
-                            price = 6500,
-                            buttons = new List<Button_Gallery>(){
-                                new Button_Gallery(){
-                                    icon = "fa fa-link",
-                                    text = "Details",
-                                    url = "#"
-                                }
-                            }
-                        }
-
-                    }
-                    
-                },
+            //*** Menu ***//
+            Menu = contex.Menu.OrderBy(x=>x.Order).ToList();
 
 
 
-            }).OrderBy(x => new{ x.module, x.order}).ToList();
+            //*** Gallery ***//
+            var queryGallery = contex.Gallery.AsQueryable();
+            queryGallery = queryGallery.Include(x=> x.Card_Gallery).Include(x=>x.Item_Gallery);
+
+            var listQuery = queryGallery.ToList();
+
+            //Distinto Id de Card
+            var distinctCard = listQuery.Select(x=>x.Card_Gallery.ID).Distinct();
+
+            //Agrega a Gallery el Card
+            foreach (var cardId in distinctCard)
+            {
+                Gallery.Add(new Gallery() { 
+                    Card_Gallery = listQuery.Select(x=>x.Card_Gallery).First(x => x.ID == cardId) 
+                });
+            }
+
+            //Agrega Items al Card
+            foreach (var item in Gallery.Select(x=>x.Card_Gallery))
+            {
+                foreach (var item1 in listQuery.Where(x => x.Card_Gallery_ID == item.ID).Select(x => x.Item_Gallery))
+                {
+                    Gallery.First(x=>x.Card_Gallery.ID == item.ID).Card_Gallery.Items.Add(item1);
+                }
+            }
 
         }        
 

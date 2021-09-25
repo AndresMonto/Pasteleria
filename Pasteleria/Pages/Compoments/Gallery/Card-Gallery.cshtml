@@ -4,29 +4,12 @@
 @using Pasteleria.Models
 
 @{
-
 	var url = Url.ActionLink();
 	Resource rs = ResourceConfig.Resources;
-	Card_Gallery gallery = new();
+	Card_Gallery gallery = rs.Gallery.Select(x=>x.Card_Gallery).First(x => x.ID == ResourceConfig.Resources.ComponentId);
 	Item_Gallery ga = new();
+
 	string id = Guid.NewGuid().ToString();
-	
-
-	if (url.EndsWith("/") || url.Contains(rs.HOMEurl))
-	{
-		gallery = rs.gallery.First(x => x.module == rs.HOME);
-
-	} else
-	{
-		foreach (var item in rs.gallery)
-		{
-			if (url.Contains(item.module))
-			{
-				gallery = rs.gallery.First(x => x.module == item.module);
-				break;
-			}
-		}
-	}
 }
 
 
@@ -41,7 +24,7 @@
 				</span>
 			</div>
 			<div class="editContent">
-				<h1 class="text-center latestitems">@gallery.title</h1>
+				<h1 class="text-center latestitems">@gallery.Title</h1>
 			</div>
 			<div class="wow-hr type_short">
 				<span class="wow-hr-h">
@@ -52,8 +35,6 @@
 			</div>
 		</div>
 		@*<div class="row">*@
-
-
 		
 		<div id="Carousel@(id)" class="carousel slide" data-ride="carousel">
 			
@@ -62,19 +43,19 @@
 
 		@{ int index = 0; }
 
-		@for(int i = 0; i < gallery.items.Count() && index < gallery.items.Count() ; i+=2){
+		@for(int i = 0; i < gallery.Items.Count() && index < gallery.Items.Count() ; i+=2){
 				
 
 			<div class="item @(index==0 ? "active" : "")">
 			<div class="container">
 			<div class="row justify-content-center">
 
-			@for(int j = 0 ; j < gallery.cardByRow ; j++){
+			@for(int j = 0 ; j < gallery.CardByRow ; j++){
 
-				@if(index < gallery.items.Count()){
+				@if(index < gallery.Items.Count()){
 
 					<div style="display: none;">
-					@( ga = gallery.items[index] )
+					@( ga = gallery.Items[index] )
 					</div>
 						
 					<!-- /.productbox -->
@@ -82,24 +63,22 @@
 						<div class="productbox">
 							<div class="fadeshop">
 								<div class="captionshop text-center" style="display: none;">
-									<h3>@ga.innerTitle</h3>
+									<h3>@ga.InnerTitle</h3>
 									<p>
-											@ga.description
+											@ga.Description
 									</p>
 									<p>
-										@foreach(var btn in ga.buttons){
-											<a href="@btn.url" class="learn-more detailslearn"><i class="@btn.icon"></i> @btn.text</a>
+										@if(!string.IsNullOrWhiteSpace(ga.ButtonUrl) && !string.IsNullOrWhiteSpace(ga.ButtonIcon) && !string.IsNullOrWhiteSpace(ga.ButtonText)){
+											<a href="@ga.ButtonUrl" class="learn-more detailslearn"><i class="@ga.ButtonIcon"></i> @ga.ButtonText</a>
 										}
 									</p>
 								</div>
-								<span class="maxproduct"><img src="@ga.image" alt=""></span>
+								<span class="maxproduct"><img src="@ga.ImageUrl" alt=""></span>
 							</div>
 							<div class="product-details">
-								<a href="@ga.titleUrl">
-								<h1>@ga.title</h1>
-								</a>
+								<h1>@ga.Title</h1>
 								<span class="price">
-								<span class="edd_price">$@ga.price</span>
+								<span class="edd_price">@( (ga.Price > 0) ? "$ " + ga.Price : "")</span>
 								</span>
 							</div>
 						</div>
@@ -116,10 +95,9 @@
                 
 		}
 
-
 		</div>
 
-		@if (gallery.carousel)
+		@if (gallery.Carousel == 1)
 		{
 			<!-- Left and right controls -->
 			<a class="left carousel-control" href="#Carousel@(id)" data-slide="prev" style="width: 70px;">

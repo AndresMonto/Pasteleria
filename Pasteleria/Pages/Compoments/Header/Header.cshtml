@@ -10,15 +10,15 @@
 
 	if (url.EndsWith("/") || url.Contains(rs.HOMEurl))
 	{
-		menu = rs.menu.First(x => x.Url == rs.HOMEurl );
+		menu = rs.Menu.First(x => x.Url == rs.HOMEurl );
 
 	} else
 	{
-		foreach (var item in rs.menu)
+		foreach (var item in rs.Menu)
 		{
 			if (url.Contains(item.Url))
 			{
-				menu = rs.menu.First(x => x.Url == item.Url);
+				menu = rs.Menu.First(x => x.Url == item.Url);
 				break;
 			}
 		}
@@ -46,7 +46,7 @@
 		<div id="navbar-collapse-02" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
 
-				@foreach(var menuOptions in rs.menu.Where(x=>x.Active==1)){
+				@foreach(var menuOptions in rs.Menu.Where(x=>x.Active==1)){
 					<li class="propClone"><a asp-area="" asp-page="@menuOptions.Url">@menuOptions.Name</a></li>
 				}
 
