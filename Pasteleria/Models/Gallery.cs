@@ -18,30 +18,42 @@ namespace Pasteleria.Models
         [ForeignKey("Item_Gallery_ID")]
         public Item_Gallery Item_Gallery { get; set; } = new();
 
+        public int Image_ID { get; set; } = new();
+        [ForeignKey("Image_ID")]
+        public Images Images { get; set; } = new();
+
     }
 
     public class Card_Gallery : Component{ 
         public string Title { get; set; }
-        public short Carousel { get; set; }
+        public int Carousel { get; set; }
         public int CardByRow { get; set; }
 
 
         [NotMapped]
         public List<Item_Gallery> Items { get; set; } = new();
 
+
     }
 
     public class Item_Gallery : Component {
-        public int Order { get; set; }
         public string Title { get; set; }
         public string InnerTitle { get; set; }
         public string Description { get; set; }
-        public string ImageUrl { get; set; }
         public int Price { get; set; }
         public string ButtonText { get; set; }
         public string ButtonIcon { get; set; }
         public string ButtonUrl { get; set; }
 
+
+        [NotMapped]
+        public Images Image { get; set; } = new();
+
+    }
+
+    public class Images : Component
+    {
+        public string Url { get; set; }
     }
 
 }

@@ -31,13 +31,13 @@ namespace Pasteleria.Models
             var contex = new Context();
 
             //*** Menu ***//
-            Menu = contex.Menu.OrderBy(x=>x.Order).ToList();
+            Menu = contex.Menu.OrderBy(x=>x.Order).Where(x=> x.Active == 1).ToList();
 
 
 
             //*** Gallery ***//
             var queryGallery = contex.Gallery.AsQueryable();
-            queryGallery = queryGallery.Include(x=> x.Card_Gallery).Include(x=>x.Item_Gallery);
+            queryGallery = queryGallery.Include(x=> x.Card_Gallery).Include(x=>x.Item_Gallery).Include(x=>x.Images);
 
             var listQuery = queryGallery.ToList();
 
@@ -48,16 +48,17 @@ namespace Pasteleria.Models
             foreach (var cardId in distinctCard)
             {
                 Gallery.Add(new Gallery() { 
-                    Card_Gallery = listQuery.Select(x=>x.Card_Gallery).First(x => x.ID == cardId) 
+                    Card_Gallery = listQuery.Select(x=>x.Card_Gallery).First(x => x.ID == cardId)
                 });
             }
 
             //Agrega Items al Card
-            foreach (var item in Gallery.Select(x=>x.Card_Gallery))
+            foreach (var card_gallery in Gallery.Select(x=>x.Card_Gallery))
             {
-                foreach (var item1 in listQuery.Where(x => x.Card_Gallery_ID == item.ID).Select(x => x.Item_Gallery))
+                foreach (var item_gallery in listQuery.Where(x => x.Card_Gallery_ID == card_gallery.ID).Select(x => x.Item_Gallery))
                 {
-                    Gallery.First(x=>x.Card_Gallery.ID == item.ID).Card_Gallery.Items.Add(item1);
+                    item_gallery.Image = listQuery.Where(x => x.Card_Gallery_ID == card_gallery.ID && x.Item_Gallery_ID == item_gallery.ID).Select(x=>x.Images).First();
+                    Gallery.First(x=>x.Card_Gallery.ID == card_gallery.ID).Card_Gallery.Items.Add(item_gallery);
                 }
             }
 
