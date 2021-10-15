@@ -11,7 +11,7 @@ namespace Pasteleria.BusinessLogic
     public class Context : DbContext
     {
         public DbSet<Menu> Menu { get; set; }
-        public DbSet<Gallery> Gallery { get; set; }
+        //public DbSet<Gallery> Gallery { get; set; }
 
         public Context() : base()
         {

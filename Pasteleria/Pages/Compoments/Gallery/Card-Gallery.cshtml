@@ -5,8 +5,20 @@
 
 @{
 	var url = Url.ActionLink();
+
 	Resource rs = ResourceConfig.Resources;
-	Card_Gallery gallery = rs.Gallery.Select(x=>x.Card_Gallery).First(x => x.ID == ResourceConfig.Resources.ComponentId);
+
+	Card_Gallery gallery = new Card_Gallery();
+
+	if (ResourceConfig.Resources.ComponentInicioId > 0) {
+
+		gallery = rs.Gallery.Select(x=>x.Card_Gallery).First(x => x.IDInicio == ResourceConfig.Resources.ComponentInicioId);
+
+	} else if(ResourceConfig.Resources.ComponentCatalogoId > 0)
+	{
+		gallery = rs.Gallery.Select(x=>x.Card_Gallery).First(x => x.IDCatalogo == ResourceConfig.Resources.ComponentCatalogoId);
+	}
+
 	Item_Gallery ga = new();
 
 	string id = Guid.NewGuid().ToString();
