@@ -10,17 +10,17 @@ namespace Pasteleria.Models
 {
     public partial class Resource
     {
-        public void ResourceCupcakescatalogo002()
+        public void ResourceCupcakesCatalogo003()
         {
 
             ////*** Gallery ***//
 
-            //2
+            //3
             Gallery.Add(new Models.Gallery
             {
                 Card_Gallery = new Card_Gallery
                 {
-                    IDCatalogo = 2,
+                    IDCatalogo = 3,
                     Title = "CUPCAKES",
                     CardByRow = 2,
                     Carousel = 1,

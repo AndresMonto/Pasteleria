@@ -53,7 +53,8 @@ namespace Pasteleria.Models
             ResourceCupcakesInicio002();
 
             ResourcePastelesCatalogo001();
-            ResourceCupcakescatalogo002();
+            ResourcePastelesCatalogo002();
+            ResourceCupcakesCatalogo003();
 
 
             ////*** Gallery ***//
