@@ -270,7 +270,9 @@ img {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: #FF4081;
+	/*background-color: rgba(255, 64, 129, 0.8);*/
+	/*background-color: #FF4081;*/
+	/*cursor: pointer;*/
 	width: 100%;
 	height: 100%;
 }
