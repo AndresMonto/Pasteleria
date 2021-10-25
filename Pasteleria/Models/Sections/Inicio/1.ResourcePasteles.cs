@@ -19,19 +19,19 @@ namespace Pasteleria.Models
                 Card_Gallery = new Card_Gallery
                 {
                    IDInicio = 1,
-                   Title = "PASTELES",
+                   Title = "TORTAS",
                    CardByRow = 2,
                    Carousel = 0,
 
                    Items = new List<Item_Gallery>{ 
                         new Item_Gallery{ 
-                            Title = "Pastel001",
+                            Title = "Torta001",
                             InnerTitle = "",
                             Description = "",
                             Image = new Images{ Description = "Pastel001", Url = "http://drive.google.com/uc?export=view&id=1g06qHbi_EWCmQEwjo6yta0Ayo3QpecVH" }
                         },
                         new Item_Gallery{
-                            Title = "Pastel002",
+                            Title = "Torta002",
                             InnerTitle = "",
                             Description = "",
                             Image = new Images{ Description = "Pastel002", Url = "http://drive.google.com/uc?export=view&id=1cy_ur0aMmp8m4nWPpWdtGG-6hAoUkq8j" }
